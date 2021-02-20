@@ -18,6 +18,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'document',
         'email',
         'password',
     ];
@@ -40,4 +41,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Set the user's document.
+     *
+     * @param  string  $document
+     * @return void
+     */
+    public function setDocumentAttribute($document)
+    {
+        $this->attributes['document'] = preg_replace('/[^0-9]/', '', $document);
+    }
 }
