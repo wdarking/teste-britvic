@@ -98,7 +98,9 @@ class CarsCrudTest extends TestCase
 
         $this->asUser()->put("cars/{$car->id}", [
             'name' => 'Foo Car',
+            'year' => $car->year,
             'model' => 'Bar',
+            'brand' => $car->brand,
             'license_plate' => 'RET123'
         ])->assertRedirect(route('cars.show', [$car]))
         ->assertSessionHas(['status' => __("Car updated successfully.")]);
@@ -109,6 +111,25 @@ class CarsCrudTest extends TestCase
             'model' => 'Bar',
             'license_plate' => 'RET123',
         ]);
+    }
+
+    public function testPutCarsUpdateRouteValidation()
+    {
+        \App\Models\Car::factory()->create(['license_plate' => 'QWE123']);
+
+        $car = \App\Models\Car::factory()->create(['license_plate' => 'ASD123']);
+
+        $this->asUser()
+            ->put("cars/{$car->id}", [])
+            ->assertSessionHasErrors(['name', 'year', 'model', 'brand', 'license_plate']);
+
+        $data = \App\Models\Car::factory()->make(['license_plate' => 'QWE123'])->toArray();
+
+        $this->asUser()
+            ->put("cars/{$car->id}", $data)
+            ->assertSessionHasErrors([
+                'license_plate' => "The license plate has already been taken."
+            ]);
     }
 
     public function testDeleteCarsRouteRemovesCarFromDb()
