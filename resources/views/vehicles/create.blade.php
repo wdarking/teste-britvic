@@ -5,7 +5,7 @@
     <div class="col-md-12">
         @include('partials.status')
         <div class="card">
-            <div class="card-header">{{ __('Add Car') }}</div>
+            <div class="card-header">{{ __('Add Vehicle') }}</div>
 
             <div class="card-body">
 
@@ -56,7 +56,10 @@
                             </span>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-primary float-right">{{ __("Submit") }}</button>
+                    <div class="float-right">
+                        <a href="{{ route('vehicles.index') }}" class="btn btn-secondary">{{ __("Back") }}</a>
+                    <button type="submit" class="btn btn-primary">{{ __("Submit") }}</button>
+                    </div>
                 </form>
             </div>
         </div>
