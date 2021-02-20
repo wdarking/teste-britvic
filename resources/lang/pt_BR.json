@@ -37,5 +37,8 @@
     "Customer": "Cliente",
     "Reservation Date": "Data de Reserva",
     "Reservation: :description": "Reserva: :description",
-    "Edit Reservation: :description": "Editar Reserva: :description"
+    "Edit Reservation: :description": "Editar Reserva: :description",
+    "You are deleting reservation :description (:id). This action is not reversible.": "Você está deletando a reserva :description (:id). Esta ação não é reversivel.",
+    "Yes, delete reservation": "Sim, deletar reserva",
+    "Reservations for :vehicle": "Reservas para :vehicle"
 }

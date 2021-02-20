@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Vehicle\StoreRequest;
 use App\Http\Requests\Vehicle\UpdateRequest;
+use App\Models\Reservation;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
 
@@ -55,7 +56,13 @@ class VehiclesController extends Controller
     {
         $vehicle = Vehicle::findOrFail($id);
 
-        return view('vehicles.show', compact('vehicle'));
+        $reservations = Reservation::query()
+            ->with(['vehicle', 'user'])
+            ->where('vehicle_id', $vehicle->id)
+            ->latest()
+            ->paginate();
+
+        return view('vehicles.show', compact('vehicle', 'reservations'));
     }
 
     /**
