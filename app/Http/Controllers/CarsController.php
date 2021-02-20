@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Car\StoreRequest;
 use App\Models\Car;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,7 @@ class CarsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         Car::create($request->all());
 

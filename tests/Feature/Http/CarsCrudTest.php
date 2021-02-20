@@ -25,7 +25,7 @@ class CarsCrudTest extends TestCase
         $this->delete('cars/1', [])->assertRedirect('login');
     }
 
-    public function testPostCarsCreateRouteInsertsCarOnDb()
+    public function testPostCarsStoreRouteInsertsCarOnDb()
     {
         $car = \App\Models\Car::factory()->make([
             'name' => 'Porsche Cayman',
@@ -44,6 +44,21 @@ class CarsCrudTest extends TestCase
             'brand' => 'Porsche',
             'license_plate' => 'ABC123A',
         ]);
+    }
+
+    public function testPostCarsStoreRouteValidation()
+    {
+        $this->asUser()->post('cars', [])
+            ->assertSessionHasErrors(['name', 'year', 'model', 'brand', 'license_plate']);
+
+        \App\Models\Car::factory()->create(['license_plate' => 'ASD123']);
+
+        $data = \App\Models\Car::factory()->make(['license_plate' => 'ASD123'])->toArray();
+
+        $this->asUser()->post('cars', $data)
+            ->assertSessionHasErrors([
+                'license_plate' => "The license plate has already been taken."
+            ]);
     }
 
     public function testGetCarsIndexRouteListCars()
