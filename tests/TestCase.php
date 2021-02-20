@@ -14,7 +14,7 @@ abstract class TestCase extends BaseTestCase
      *
      * @param User $user
      * @param string $driver
-     * @return void
+     * @return $this
      */
     public function asUser(User $user = null, $driver = 'web')
     {
