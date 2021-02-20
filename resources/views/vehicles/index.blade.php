@@ -6,9 +6,9 @@
         @include('partials.status')
         <div class="card">
             <div class="card-header">
-                {{ __('Cars') }}
+                {{ __('Vehicles') }}
                 <div class="float-right">
-                    <a href="{{ route('cars.create') }}" class="btn btn-sm btn-primary">{{ __("Add Car") }}</a>
+                    <a href="{{ route('vehicles.create') }}" class="btn btn-sm btn-primary">{{ __("Add Vehicle") }}</a>
                 </div>
             </div>
 
@@ -27,25 +27,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($cars as $car)
+                            @foreach($vehicles as $vehicle)
                             <tr>
-                                <th scope="row">{{ $car->id }}</th>
-                                <td>{{ $car->name }}</td>
-                                <td>{{ $car->year }}</td>
-                                <td>{{ $car->brand }}</td>
-                                <td>{{ $car->model }}</td>
-                                <td>{{ $car->license_plate }}</td>
+                                <th scope="row">{{ $vehicle->id }}</th>
+                                <td>{{ $vehicle->name }}</td>
+                                <td>{{ $vehicle->year }}</td>
+                                <td>{{ $vehicle->brand }}</td>
+                                <td>{{ $vehicle->model }}</td>
+                                <td>{{ $vehicle->license_plate }}</td>
                                 <td>
-                                    <a href="{{ route('cars.show', [$car]) }}" class="btn btn-sm btn-primary">{{ __('View') }}</a>
-                                    <a href="{{ route('cars.edit', [$car]) }}" class="btn btn-sm btn-secondary">{{ __('Edit') }}</a>
-                                    <a href="{{ route('cars.show', [$car, 'delete' => 1]) }}" class="btn btn-sm btn-danger">{{ __('Delete') }}</a>
+                                    <a href="{{ route('vehicles.show', [$vehicle]) }}" class="btn btn-sm btn-primary">{{ __('View') }}</a>
+                                    <a href="{{ route('vehicles.edit', [$vehicle]) }}" class="btn btn-sm btn-secondary">{{ __('Edit') }}</a>
+                                    <a href="{{ route('vehicles.show', [$vehicle, 'delete' => 1]) }}" class="btn btn-sm btn-danger">{{ __('Delete') }}</a>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                     <div class="m-2">
-                        {{ $cars->links() }}
+                        {{ $vehicles->links() }}
                     </div>
                 </div>
             </div>

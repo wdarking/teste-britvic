@@ -9,11 +9,11 @@
 
             <div class="card-body">
 
-                <form action="{{ route('cars.store') }}" method="POST">
+                <form action="{{ route('vehicles.store') }}" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label for="carName">{{ __("Name") }}</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="carName" name="name">
+                        <label for="vehicleName">{{ __("Name") }}</label>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="vehicleName" name="name">
                         @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -21,8 +21,8 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="carYear">{{ __("Year") }}</label>
-                        <input type="text" class="form-control @error('year') is-invalid @enderror" id="carYear" name="year">
+                        <label for="vehicleYear">{{ __("Year") }}</label>
+                        <input type="text" class="form-control @error('year') is-invalid @enderror" id="vehicleYear" name="year">
                         @error('year')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -30,8 +30,8 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="carBrand">{{ __("Brand") }}</label>
-                        <input type="text" class="form-control @error('brand') is-invalid @enderror" id="carBrand" name="brand">
+                        <label for="vehicleBrand">{{ __("Brand") }}</label>
+                        <input type="text" class="form-control @error('brand') is-invalid @enderror" id="vehicleBrand" name="brand">
                         @error('brand')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -39,8 +39,8 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="carModel">{{ __("Model") }}</label>
-                        <input type="text" class="form-control @error('model') is-invalid @enderror" id="carModel" name="model">
+                        <label for="vehicleModel">{{ __("Model") }}</label>
+                        <input type="text" class="form-control @error('model') is-invalid @enderror" id="vehicleModel" name="model">
                         @error('model')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

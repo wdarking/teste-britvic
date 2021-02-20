@@ -5,9 +5,9 @@
                 <div class="row">
                     <div class="col">
                         <div class="nav flex-column nav-pills" id="v-pills-tab">
-                            <a class="nav-link @if(request()->is('home')) active @endif" href="/home" role="tab">{{ __("Home") }}</a>
-                            <a class="nav-link @if(request()->is('users')) active @endif" href="/users" role="tab">{{ __("Users") }}</a>
-                            <a class="nav-link @if(request()->is('cars')) active @endif" href="/cars" role="tab">{{ __("Cars") }}</a>
+                            <a class="nav-link @if(request()->is('home')) active @endif" href="{{ route('home') }}" role="tab">{{ __("Home") }}</a>
+                            {{-- <a class="nav-link @if(request()->is('users')) active @endif" href="{{ route('users.index') }}" role="tab">{{ __("Users") }}</a> --}}
+                            <a class="nav-link @if(request()->is('vehicles')) active @endif" href="{{ route('vehicles.index') }}" role="tab">{{ __("Vehicles") }}</a>
                         </div>
                     </div>
                 </div>

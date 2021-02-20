@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Car\StoreRequest;
-use App\Http\Requests\Car\UpdateRequest;
-use App\Models\Car;
+use App\Http\Requests\Vehicle\StoreRequest;
+use App\Http\Requests\Vehicle\UpdateRequest;
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
 
-class CarsController extends Controller
+class VehiclesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,9 @@ class CarsController extends Controller
      */
     public function index()
     {
-        $cars = Car::latest()->paginate();
+        $vehicles = Vehicle::latest()->paginate();
 
-        return view('cars.index', compact('cars'));
+        return view('vehicles.index', compact('vehicles'));
     }
 
     /**
@@ -28,7 +28,7 @@ class CarsController extends Controller
      */
     public function create()
     {
-        return view('cars.create');
+        return view('vehicles.create');
     }
 
     /**
@@ -39,10 +39,10 @@ class CarsController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        Car::create($request->all());
+        Vehicle::create($request->all());
 
-        return redirect()->route('cars.index')
-            ->with(['status' => __("Car created successfully.")]);
+        return redirect()->route('vehicles.index')
+            ->with(['status' => __("Vehicle created successfully.")]);
     }
 
     /**
@@ -53,9 +53,9 @@ class CarsController extends Controller
      */
     public function show($id)
     {
-        $car = Car::findOrFail($id);
+        $vehicle = Vehicle::findOrFail($id);
 
-        return view('cars.show', compact('car'));
+        return view('vehicles.show', compact('vehicle'));
     }
 
     /**
@@ -66,9 +66,9 @@ class CarsController extends Controller
      */
     public function edit($id)
     {
-        $car = Car::findOrFail($id);
+        $vehicle = Vehicle::findOrFail($id);
 
-        return view('cars.edit', compact('car'));
+        return view('vehicles.edit', compact('vehicle'));
     }
 
     /**
@@ -80,12 +80,12 @@ class CarsController extends Controller
      */
     public function update(UpdateRequest $request, $id)
     {
-        $car = Car::findOrFail($id);
+        $vehicle = Vehicle::findOrFail($id);
 
-        $car->fill($request->all())->update();
+        $vehicle->fill($request->all())->update();
 
-        return redirect()->route('cars.show', [$car])
-            ->with(['status' => __("Car updated successfully.")]);
+        return redirect()->route('vehicles.show', [$vehicle])
+            ->with(['status' => __("Vehicle updated successfully.")]);
     }
 
     /**
@@ -96,11 +96,11 @@ class CarsController extends Controller
      */
     public function destroy($id)
     {
-        $car = Car::findOrFail($id);
+        $vehicle = Vehicle::findOrFail($id);
 
-        $car->delete();
+        $vehicle->delete();
 
-        return redirect()->route('cars.index')
-            ->with(['status' => __("Car deleted successfully.")]);
+        return redirect()->route('vehicles.index')
+            ->with(['status' => __("Vehicle deleted successfully.")]);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Car;
+namespace App\Http\Requests\Vehicle;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -32,7 +32,7 @@ class UpdateRequest extends FormRequest
             'license_plate' => [
                 'required',
                 'max:255',
-                Rule::unique('cars')->ignore($this->route('car'))
+                Rule::unique('vehicles')->ignore($this->route('vehicle'))
             ],
         ];
     }

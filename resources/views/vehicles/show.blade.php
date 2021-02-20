@@ -6,10 +6,10 @@
         @include('partials.status')
         <div class="card">
             <div class="card-header">
-                {{ __('Car: :name', ['name' => $car->name]) }}
+                {{ __('Vehicle: :name', ['name' => $vehicle->name]) }}
                 <div class="btn-group float-right">
-                    <a href="{{ route('cars.edit', [$car]) }}" class="btn btn-sm btn-secondary">{{ __("Edit") }}</a>
-                    <a href="{{ route('cars.destroy', [$car]) }}" class="btn btn-sm btn-danger" data-toggle="modal"
+                    <a href="{{ route('vehicles.edit', [$vehicle]) }}" class="btn btn-sm btn-secondary">{{ __("Edit") }}</a>
+                    <a href="{{ route('vehicles.destroy', [$vehicle]) }}" class="btn btn-sm btn-danger" data-toggle="modal"
                         data-target="#deleteCarModal">
                         {{ __("Delete") }}
                     </a>
@@ -21,15 +21,15 @@
                 <div class="row">
                     <div class="col">
                         <ul class="list-group">
-                            <li class="list-group-item">{{ __("Name") }}: {{ $car->name }}</li>
-                            <li class="list-group-item">{{ __("Year") }}: {{ $car->year }}</li>
-                            <li class="list-group-item">{{ __("Brand") }}: {{ $car->brand }}</li>
-                            <li class="list-group-item">{{ __("Model") }}: {{ $car->model }}</li>
-                            <li class="list-group-item">{{ __("License Plate") }}: {{ $car->license_plate }}</li>
+                            <li class="list-group-item">{{ __("Name") }}: {{ $vehicle->name }}</li>
+                            <li class="list-group-item">{{ __("Year") }}: {{ $vehicle->year }}</li>
+                            <li class="list-group-item">{{ __("Brand") }}: {{ $vehicle->brand }}</li>
+                            <li class="list-group-item">{{ __("Model") }}: {{ $vehicle->model }}</li>
+                            <li class="list-group-item">{{ __("License Plate") }}: {{ $vehicle->license_plate }}</li>
                         </ul>
                     </div>
                     <div class="col-3">
-                        <img class="img-fluid" src="https://via.placeholder.com/200x200?text={{ $car->name }}" alt="">
+                        <img class="img-fluid" src="https://via.placeholder.com/200x200?text={{ $vehicle->name }}" alt="">
                     </div>
                 </div>
 
@@ -49,16 +49,16 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>{{ __("You are deleting car :name (:id). This action is not reversible.", ['name' => $car->name, 'id' => $car->id]) }}
+                <p>{{ __("You are deleting vehicle :name (:id). This action is not reversible.", ['name' => $vehicle->name, 'id' => $vehicle->id]) }}
                 </p>
-                <form id="deleteCarForm" action="{{ route('cars.destroy', [$car]) }}" method="POST">
+                <form id="deleteCarForm" action="{{ route('vehicles.destroy', [$vehicle]) }}" method="POST">
                     @csrf
                     @method('delete')
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __("Close") }}</button>
-                <button type="submit" class="btn btn-danger" form="deleteCarForm">{{ __("Yes, delete car") }}</button>
+                <button type="submit" class="btn btn-danger" form="deleteCarForm">{{ __("Yes, delete vehicle") }}</button>
             </div>
         </div>
     </div>
@@ -71,7 +71,7 @@
             $('#deleteCarModal').modal('show')
 
             $('#deleteCarModal').on('hidden.bs.modal', function (event) {
-                window.location.href = "{{ route('cars.show', [$car]) }}"
+                window.location.href = "{{ route('vehicles.show', [$vehicle]) }}"
             })
         }
     })()
