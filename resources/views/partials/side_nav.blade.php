@@ -8,6 +8,7 @@
                             <a class="nav-link @if(request()->is('home')) active @endif" href="{{ route('home') }}" role="tab">{{ __("Home") }}</a>
                             {{-- <a class="nav-link @if(request()->is('users')) active @endif" href="{{ route('users.index') }}" role="tab">{{ __("Users") }}</a> --}}
                             <a class="nav-link @if(request()->is('vehicles')) active @endif" href="{{ route('vehicles.index') }}" role="tab">{{ __("Vehicles") }}</a>
+                            <a class="nav-link @if(request()->is('reservations')) active @endif" href="{{ route('reservations.index') }}" role="tab">{{ __("Reservations") }}</a>
                         </div>
                     </div>
                 </div>

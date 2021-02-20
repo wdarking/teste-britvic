@@ -7,12 +7,17 @@
         <div class="card">
             <div class="card-header">
                 {{ __('Vehicle: :name', ['name' => $vehicle->name]) }}
-                <div class="btn-group float-right">
-                    <a href="{{ route('vehicles.edit', [$vehicle]) }}" class="btn btn-sm btn-secondary">{{ __("Edit") }}</a>
-                    <a href="{{ route('vehicles.destroy', [$vehicle]) }}" class="btn btn-sm btn-danger" data-toggle="modal"
-                        data-target="#deleteCarModal">
-                        {{ __("Delete") }}
-                    </a>
+                <div class="float-right">
+                    <a href="{{ route('reservations.create', ['vehicle_id' => $vehicle->id]) }}"
+                        class="btn btn-sm btn-primary">{{ __("Reserve") }}</a>
+                    <div class="btn-group">
+                        <a href="{{ route('vehicles.edit', [$vehicle]) }}"
+                            class="btn btn-sm btn-secondary">{{ __("Edit") }}</a>
+                        <a href="{{ route('vehicles.destroy', [$vehicle]) }}" class="btn btn-sm btn-danger"
+                            data-toggle="modal" data-target="#deleteCarModal">
+                            {{ __("Delete") }}
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -29,7 +34,8 @@
                         </ul>
                     </div>
                     <div class="col-3">
-                        <img class="img-fluid" src="https://via.placeholder.com/200x200?text={{ $vehicle->name }}" alt="">
+                        <img class="img-fluid" src="https://via.placeholder.com/200x200?text={{ $vehicle->name }}"
+                            alt="">
                     </div>
                 </div>
 
@@ -58,7 +64,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __("Close") }}</button>
-                <button type="submit" class="btn btn-danger" form="deleteCarForm">{{ __("Yes, delete vehicle") }}</button>
+                <button type="submit" class="btn btn-danger"
+                    form="deleteCarForm">{{ __("Yes, delete vehicle") }}</button>
             </div>
         </div>
     </div>
