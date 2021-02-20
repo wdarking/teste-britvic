@@ -4,5 +4,8 @@
     "Document": "CPF",
     "Password": "Senha",
     "Confirm Password": "Confirmar Senha",
-    "Register": "Registrar"
+    "Register": "Registrar",
+    "Home": "Inicio",
+    "Users": "Usuários",
+    "Cars": "Carros"
 }

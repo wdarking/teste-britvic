@@ -45,7 +45,7 @@
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
-                            
+
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -76,7 +76,20 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            @guest
+                @yield('content')
+            @else
+                <div class="container">
+                    <div class="row">
+                        <div class="col col-md-3 mb-3">
+                            @include('partials.side_nav')
+                        </div>
+                        <div class="col">
+                            @yield('content')
+                        </div>
+                    </div>
+                </div>
+            @endguest
         </main>
     </div>
 </body>
