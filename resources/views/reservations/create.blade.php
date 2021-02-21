@@ -53,7 +53,7 @@
                     <div class="form-group">
                         <label for="reservationDate">{{ __("Reservation Date") }}</label>
                         <input type="text" class="form-control datetimepicker @error('date') is-invalid @enderror"
-                            id="reservationDate" name="date">
+                            id="reservationDate" name="date" @if($date = request()->query('date')) value="{{ $date }}" @endif>
                         @error('date')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

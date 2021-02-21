@@ -24,6 +24,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::middleware(['auth'])->group(function () {
 
+    Route::get('query', \App\Http\Controllers\QueryController::class)->name('query');
     Route::resource('vehicles', \App\Http\Controllers\VehiclesController::class);
     Route::resource('reservations', \App\Http\Controllers\ReservationsController::class);
 });

@@ -80,7 +80,7 @@
             @else
                 <div class="container">
                     <div class="row">
-                        <div class="col col-md-3 mb-3">
+                        <div class="col col-md-3 mb-3 d-print-none">
                             @include('partials.side_nav')
                         </div>
                         <div class="col">
