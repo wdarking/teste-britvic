@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Events\ReservationCreated;
+use App\Events\ReservationUpdated;
+use App\Listeners\LogReservation;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -17,6 +20,12 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+        ],
+        ReservationCreated::class => [
+            LogReservation::class,
+        ],
+        ReservationUpdated::class => [
+            LogReservation::class,
         ],
     ];
 

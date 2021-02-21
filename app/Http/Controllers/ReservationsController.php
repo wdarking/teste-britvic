@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ReservationCreated;
+use App\Events\ReservationUpdated;
 use App\Http\Requests\Reservation\StoreRequest;
 use App\Http\Requests\Reservation\UpdateRequest;
 use App\Models\Reservation;
@@ -47,7 +49,9 @@ class ReservationsController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        Reservation::create($request->validated());
+        $reservation = Reservation::create($request->validated());
+
+        event(new ReservationCreated($reservation));
 
         return redirect()->route('reservations.index')
             ->with(['status' => __("Reservation created successfully.")]);
@@ -94,6 +98,8 @@ class ReservationsController extends Controller
         $reservation = Reservation::findOrFail($id);
 
         $reservation->fill($request->validated())->update();
+
+        event(new ReservationUpdated($reservation));
 
         return redirect()->route('reservations.show', [$reservation])
             ->with(['status' => __("Reservation updated successfully.")]);

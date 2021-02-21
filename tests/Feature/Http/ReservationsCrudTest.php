@@ -4,6 +4,7 @@ namespace Tests\Feature\Http;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 class ReservationsCrudTest extends TestCase
@@ -27,6 +28,8 @@ class ReservationsCrudTest extends TestCase
 
     public function testPostReservationsStoreRouteInsertsReservationOnDb()
     {
+        Event::fake([\App\Events\ReservationCreated::class]);
+
         $vehicle = \App\Models\Vehicle::factory()->create();
         $user = \App\Models\User::factory()->create();
         $reserveDate = now()->addDays(2)->format('Y-m-d');
@@ -45,6 +48,8 @@ class ReservationsCrudTest extends TestCase
             'user_id' => $user->id,
             'date' => $reserveDate
         ]);
+
+        Event::assertDispatched(\App\Events\ReservationCreated::class, 1);
     }
 
     public function testPostReservationsStoreRouteValidation()
@@ -110,6 +115,8 @@ class ReservationsCrudTest extends TestCase
 
     public function testPutReservationUpdateRouteUpdatesReservationOnDb()
     {
+        Event::fake([\App\Events\ReservationUpdated::class]);
+
         $reservation = \App\Models\Reservation::factory()->create();
 
         $this->asUser()->put("reservations/{$reservation->id}", [
@@ -125,6 +132,8 @@ class ReservationsCrudTest extends TestCase
             'vehicle_id' => $reservation->vehicle_id,
             'date' => now()->addDays(5)->format('Y-m-d')
         ]);
+
+        Event::assertDispatched(\App\Events\ReservationUpdated::class, 1);
     }
 
     public function testPutReservationsUpdateRouteValidation()
