@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\Reservation;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -14,14 +15,16 @@ class ReservationUpdated
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $reservation;
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Reservation $reservation)
     {
-        //
+        $this->reservation = $reservation;
     }
 
     /**
