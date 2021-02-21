@@ -35,4 +35,20 @@ class Vehicle extends Model
      * @var array
      */
     protected $casts = [];
+
+    /**
+     * Getter for vehicle description.
+     *
+     * @return string
+     */
+    public function getDescriptionAttribute()
+    {
+        return sprintf(
+            "%s | %s | %s | %s",
+            $this->model,
+            $this->year,
+            $this->brand,
+            $this->license_plate
+        );
+    }
 }
