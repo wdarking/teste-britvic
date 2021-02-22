@@ -27,4 +27,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('query', \App\Http\Controllers\QueryController::class)->name('query');
     Route::resource('vehicles', \App\Http\Controllers\VehiclesController::class);
     Route::resource('reservations', \App\Http\Controllers\ReservationsController::class);
+    Route::resource('users', \App\Http\Controllers\UsersController::class);
 });

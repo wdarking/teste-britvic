@@ -25,7 +25,7 @@
                     <div class="col">
                         <ul class="list-group">
                             <li class="list-group-item">{{ __("Vehicle") }}: {{ $reservation->vehicle->name }} | <a href="{{ route('vehicles.show', [$reservation->vehicle]) }}" target="_blank">{{ $reservation->vehicle->license_plate }}</a></li>
-                            <li class="list-group-item">{{ __("Customer") }}: {{ $reservation->user->name }} | <a href="">{{ $reservation->user->document }}</a></li>
+                            <li class="list-group-item">{{ __("Customer") }}: {{ $reservation->user->name }} | <a href="{{ route('users.show', [$reservation->user]) }}">{{ $reservation->user->document }}</a></li>
                             <li class="list-group-item">{{ __("Reservation Date") }}: {{ $reservation->formated_date }}</li>
                         </ul>
                     </div>
