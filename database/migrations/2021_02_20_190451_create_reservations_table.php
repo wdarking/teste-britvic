@@ -26,6 +26,16 @@ class CreateReservationsTable extends Migration
             $table->index('vehicle_id');
             $table->index('user_id');
             $table->index('date');
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
+
+            $table->foreign('vehicle_id')
+                ->references('id')
+                ->on('vehicles')
+                ->onDelete('cascade');
         });
     }
 
