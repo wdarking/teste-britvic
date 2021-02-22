@@ -40,7 +40,7 @@ class VehiclesController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        Vehicle::create($request->all());
+        Vehicle::create($request->validated());
 
         return redirect()->route('vehicles.index')
             ->with(['status' => __("Vehicle created successfully.")]);
@@ -89,7 +89,7 @@ class VehiclesController extends Controller
     {
         $vehicle = Vehicle::findOrFail($id);
 
-        $vehicle->fill($request->all())->update();
+        $vehicle->fill($request->validated())->update();
 
         return redirect()->route('vehicles.show', [$vehicle])
             ->with(['status' => __("Vehicle updated successfully.")]);
