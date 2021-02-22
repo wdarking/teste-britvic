@@ -25,3 +25,11 @@ Após isto, você pode fazer o login em http://127.0.0.1/login com a conta dev/a
 
 - email: dev@dev.com
 - senha: dev
+
+### Testes
+
+Para executar os testes automatizados, utilize o comando `./vendor/bin/phpunit`.
+
+Ultima execução da suite:
+
+![](https://s4.gifyu.com/images/Screenshot-from-2021-02-21-23-30-15.png)
